@@ -4,6 +4,7 @@ import User from "./models/User";
 import bcrypt from "bcrypt";
 import cookieParser from "cookie-parser";
 import { createToken, validateToken } from "./JWT";
+import { logger } from "./utils/logger";
 
 const app = express();
 const port = 8081;
@@ -82,6 +83,6 @@ app.get("/", (req, res) => {
 connectToDb().then(() => {
   app.listen(port, () => {
     // console.log("accessToken: ", createToken("djamal"));
-    console.log(`Server listening at http://localhost:${port}`);
+    logger.debug(`Server listening at http://localhost:${port}`);
   });
 });
